@@ -43,7 +43,7 @@
 # added my folder code after this line
 
 resource "google_sql_database_instance" "main" {
-  name                = "var.db_name"
+  name                = "wordpress"
   database_version    = "MYSQL_5_7"
   deletion_protection = "false"
   region              = "var.region"
