@@ -59,7 +59,7 @@ jobs:
           projectBaseDir: .
           args: >
             -Dsonar.organization=terraform-project-89
-            -Dsonar.projectKey=terraform-project-89_terraform-project-89
+            -Dsonar.projectKey=new-key
             -Dsonar.sources=./
     
       
