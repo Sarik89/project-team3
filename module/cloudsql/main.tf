@@ -46,7 +46,7 @@ resource "google_sql_database_instance" "main" {
   name                = "wordpress"
   database_version    = "MYSQL_5_7"
   deletion_protection = "false"
-  region              = "var.region"
+  region              = var.region
   settings {
     # Second-generation instance tiers are based on the machine
     # type. See argument reference below.
@@ -75,13 +75,13 @@ resource "random_password" "password" {
 
 
 resource "google_sql_user" "users" {
-  name     = "var.db_username"
+  name     = var.db_username
   instance = google_sql_database_instance.main.name
   host     = "%"
   password = random_password.password.result
 }
 
 resource "google_sql_database" "database" {
-  name     = "var.db_name"
+  name     = var.db_name
   instance = google_sql_database_instance.main.name
 }
