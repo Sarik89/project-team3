@@ -5,7 +5,7 @@ env:
   project_id:      "${{ secrets.PROJECT_ID }}"
   app_name:        "wordpress"
   tag_new_version: "${GITHUB_SHA}"
-  repository: "project-team3"
+  repository: "wordpress"
   
 
   # Sonar stuff, please update accordingly
@@ -58,8 +58,8 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.organization=team-3
-            -Dsonar.projectKey=team-3_sonarqube-for-project-1
+            -Dsonar.organization=terraform-project-89
+            -Dsonar.projectKey=terraform-project-89_terraform-project-89
             -Dsonar.sources=./
     
       
