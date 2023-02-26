@@ -40,7 +40,7 @@ jobs:
           git clone "${{ env.helm_repository }}"
 
       - name: Configure Backend
-        working-directory: "custom_helm_chart"
+        working-directory: "project-team3"
         run: |
           bash setenv.sh
 
