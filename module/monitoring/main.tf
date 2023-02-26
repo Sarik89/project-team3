@@ -1,7 +1,7 @@
 resource "google_monitoring_uptime_check_config" "https" {
   display_name = "https://${var.service_name}.${var.google_domain_name}"
   timeout      = "60s"
-  project      = var.PROJECT_ID
+  project      = var.project_id
 
   http_check {
     path         = "/"
@@ -13,7 +13,7 @@ resource "google_monitoring_uptime_check_config" "https" {
   monitored_resource {
     type = "uptime_url"
     labels = {
-      project_id = var.PROJECT_ID
+      project_id = var.project_id
       host       = "${var.service_name}.${var.google_domain_name}"
     }
   }
