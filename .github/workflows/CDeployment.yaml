@@ -41,12 +41,12 @@ jobs:
           git clone "${{ env.helm_repository }}"
 
       - name: Configure Backend
-        working-directory: "team-3"
+        working-directory: "project-team3"
         run: |
           bash setenv.sh
 
       - name: Initialize
-        working-directory: "team-3"
+        working-directory: "project-team3"
         run: |
           terraform init 
 
@@ -75,7 +75,7 @@ jobs:
             
       # Runs a set of commands using the runners shel
       - name: Deploy Application
-        working-directory: "team-3"
+        working-directory: "project-team3"
         run: |
           terraform apply    --auto-approve
             -var repository="${{ env.repository }}"     \
