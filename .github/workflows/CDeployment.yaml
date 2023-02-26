@@ -4,21 +4,19 @@ env:
   app_version:        ${GITHUB_SHA} 
   app_port:            "80"
   project_id:         "${{ secrets.PROJECT_ID }}"
-  repository:         "us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/project-team3/wordpress"
+  repository:         "us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/wordpress/wordpress"
   cluster_name:       "project-cluster"
-  helm_repository:    "https://github.com/kanirin/team-3.git"
+  helm_repository:    "https://github.com/Sarik89/project-team3.git
   google_domain_name: "${{ secrets.GOOGLE_DOMAIN_NAME }}"
   environment:        "dev"
   
 name: ContinuousDeployment 
 
 on:
-  push:
-    branches: [ "master" ]
-#   workflow_run:
-#     workflows: ["ContinuousDelivery"]
-#     types:
-#       - completed
+  workflow_run:
+    workflows: ["ContinuousDelivery"]
+    types:
+      - completed
 
 # A workflow run is made up of one or more jobs tat can run sequentially or in parallel
 jobs:
@@ -53,7 +51,7 @@ jobs:
           terraform init 
 
       # - name: Create workspace
-      #   working-directory: "team-3"
+      #   working-directory: "project-team3"
       #   run: |
       #     terraform workspace create dev && terraform workspace  select  dev   ||  terraform workspace  new  dev
 
@@ -80,12 +78,12 @@ jobs:
         working-directory: "team-3"
         run: |
           terraform apply    --auto-approve
-          # -var repository="${{ env.repository }}"     \
-          # -var app_version="${{ env.app_version }}"   \
-          # -var app_port="${{ env.app_port }}"          \
-          # -var google_domain_name="${{ env.google_domain_name }}"          \
-          # -var app_name="${{ env.app_name }}"   \
-          # -var region="${{ env.region }}"  \
-          # -var project_id="${{ secrets.PROJECT_ID }}" \
-          # -var environment="${{ env.environment }}" \
-          # --auto-approve
+            -var repository="${{ env.repository }}"     \
+            -var app_version="${{ env.app_version }}"   \
+            -var app_port="${{ env.app_port }}"          \
+            -var google_domain_name="${{ env.google_domain_name }}"          \
+            -var app_name="${{ env.app_name }}"   \
+            -var region="${{ env.region }}"  \
+            -var project_id="${{ secrets.PROJECT_ID }}" \
+            -var environment="${{ env.environment }}" \
+            --auto-approve
