@@ -1,6 +1,6 @@
 variable "project_name" {
   type        = string
-  default     = "terraform-project-kani95" #that yellow part 
+  default     = "terraform-project-sarvar89" #that yellow part 
   description = "enter your project name"
 }
 
@@ -36,7 +36,7 @@ variable "db_password" {
 
 variable "db_username" {
   type        = string
-  default     = "bob"
+  default     = "diana"
   description = "input the database authorized user "
 }
 
@@ -49,7 +49,7 @@ variable "db_host" {
 
 variable "db_name" {
   type        = string
-  default     = "my_dbname"
+  default     = "wordpress"
   description = "description"
 }
 
