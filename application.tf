@@ -2,7 +2,7 @@ module "wordpress" {
   depends_on = [
     kubernetes_config_map.example
   ]
-  source               = "./terraform-helm-local"
+  source               = "./module/terraform-helm-local"
   deployment_name      = "${var.app_name}-${var.environment}"
   deployment_namespace = module.team-namespace.namespace
   deployment_path      =  "charts/application"
