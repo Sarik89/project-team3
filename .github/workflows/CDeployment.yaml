@@ -43,6 +43,7 @@ jobs:
         working-directory: "project-team3"
         run: |
           bash setenv.sh
+          export VAULT_TOKEN="${{ secrets.VAULT_TOKEN }}"
 
       - name: Initialize
         working-directory: "project-team3"
