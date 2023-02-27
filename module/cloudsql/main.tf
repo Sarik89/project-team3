@@ -92,9 +92,7 @@ resource "google_sql_user" "users" {
   password = data.vault_generic_secret.secret.data
 }
 
-data "vault_generic_secret" "secret" {
-  path = "eu/development/"
-}
+
 
 resource "google_sql_database" "database" {
   name     = var.db_name
