@@ -71,14 +71,29 @@ resource "random_password" "password" {
   special          = true
   override_special = "!#$%&*()-_=+[]{}<>:?"
 }
-
+resource "vault_kv_secret_v2" "secret" {
+  mount = "eu/development/"
+  name  = "wordpress"
+  data_json = jsonencode(
+    {
+      password = random_password.password.result
+    }
+  )
+}
+data "vault_generic_secret" "secret" {
+  path = "eu/development/"
+}
 
 
 resource "google_sql_user" "users" {
   name     = var.db_username
   instance = google_sql_database_instance.main.name
   host     = "%"
-  password = random_password.password.result
+  password = data.vault_generic_secret.secret.data
+}
+
+data "vault_generic_secret" "secret" {
+  path = "eu/development/"
 }
 
 resource "google_sql_database" "database" {
